@@ -30,4 +30,4 @@ jobs:
 
       - name: Snyk Code # Remove || true to fail if there are vulnerabilities
         run: |
-          snyk code test --severity-threshold=high 
+          snyk code test
