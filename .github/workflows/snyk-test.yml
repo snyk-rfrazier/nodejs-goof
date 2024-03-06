@@ -8,8 +8,7 @@ on:
 
 jobs:
   build:
-    name: Test and build
-    environment: snyk-npm
+    name: Test-Fail on High and Critical
     runs-on: ubuntu-latest
 
     strategy:
