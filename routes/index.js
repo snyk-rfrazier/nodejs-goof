@@ -72,6 +72,12 @@ exports.login = function (req, res, next) {
   });
 };
 
+const { rateLimit } = require('express-rate-limit');
+const loginRateLimiter = rateLimit({
+  windowMs: 30 * 60 * 1000, // 30 minutes
+  limit: 5, // Limit each IP to 5 requests per windowMs
+});
+
 exports.admin = function (req, res, next) {
   return res.render('admin', {
     title: 'Admin Access Granted',
