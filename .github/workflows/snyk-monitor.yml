@@ -16,7 +16,7 @@ jobs:
       - name: Setup Snyk
         run: |
           npm install snyk -g
-          snyk auth ${{secrets.SNYK_TOKEN}}
+          snyk auth ${{secrets.SNYK_AUTH}}
       - name: Snyk Monitor
         run: |
           snyk monitor --project-tags=reportable=true --target-reference=${{ github.event.repository.name }} --org=prod-code
