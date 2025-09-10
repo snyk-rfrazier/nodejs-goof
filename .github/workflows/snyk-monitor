@@ -1,0 +1,20 @@
+name: Snyk Monitor
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  snyk-monitor:
+    name: Snyk Monitor Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Snyk
+        run: |\
+          npm install snyk -g
+          snyk auth ${{secrets.SNYK_TOKEN}}
+      - name: Snyk Monitor
+        run: |\
+          snyk monitor --project-tags=reportable=true --target-reference=${{ github.event.repository.name }} --org=prod-dependencies
