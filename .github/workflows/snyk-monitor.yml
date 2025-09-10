@@ -19,4 +19,4 @@ jobs:
           snyk auth ${{secrets.SNYK_AUTH}}
       - name: Snyk Monitor
         run: |
-          snyk monitor --project-tags=reportable=true --target-reference=${{ github.event.repository.name }} --org=prod-code
+          snyk monitor --project-tags=ci-id=CI1234567 --target-reference=${{ github.event.repository.name }} --org=prod-code
